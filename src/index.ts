@@ -614,7 +614,7 @@ function internalHostMetricsClass(error: string): string | undefined {
 
 
 /**
- * Solar eclipses, local eclipse circumstances, Moon phases and the seasons from the US Naval Observatory — when the next solar eclipse is, what it looks like from a place, every full and new moon, equinoxes and solstices.
+ * Next solar eclipse, eclipse times by location, Moon phases and seasons from the US Naval Observatory.
  *
  * Keyless. Every time USNO publishes is Universal Time (UT1), and every
  * response here says so.
@@ -799,18 +799,16 @@ async function solarEclipses(args: Record<string, unknown>) {
     const next = eclipses.find((e) => e.date >= today) ?? null;
     return { next_eclipse: next, eclipses, years_covered: [year], time_note: TIME_NOTE, source: SOURCE };
   }
-  // USNO's front end is slow to accept connections (measured 3s connect + 6s
-  // TLS on 2026-09-10), so ask for this year first and only reach for next
-  // year when nothing is left in this one — usually a single round trip.
+  // Fetch this year and next IN PARALLEL. USNO's cost is in accepting the
+  // connection (3s connect + 6s TLS measured 2026-09-10, 6-22s per call), and
+  // it is per-connection, not per-request: two at once cost max(), two in
+  // sequence cost sum(). The sequential version blew the gateway's 28s answer
+  // budget the first time it was asked, because after the year's last eclipse
+  // every "next eclipse" question needs both years.
   const thisYear = Number(today.slice(0, 4));
-  const years = [thisYear];
-  let eclipses = await solarEclipsesIn(thisYear);
-  let next = eclipses.find((e) => e.date >= today) ?? null;
-  if (!next && thisYear < MAX_YEAR) {
-    years.push(thisYear + 1);
-    eclipses = eclipses.concat(await solarEclipsesIn(thisYear + 1));
-    next = eclipses.find((e) => e.date >= today) ?? null;
-  }
+  const years = thisYear < MAX_YEAR ? [thisYear, thisYear + 1] : [thisYear];
+  const eclipses = (await Promise.all(years.map(solarEclipsesIn))).flat();
+  const next = eclipses.find((e) => e.date >= today) ?? null;
   return { next_eclipse: next, as_of: today, eclipses, years_covered: years, time_note: TIME_NOTE, source: SOURCE };
 }
 
