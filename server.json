@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pipeworx-io/usno-astronomy",
+  "title": "Usno Astronomy",
+  "description": "Solar eclipses, local eclipse circumstances, Moon phases and the seasons from the US Naval Observatory — when the next solar eclipse is, what it looks like from a place, every full and new moon, equinoxes and solstices.",
+  "version": "0.1.0",
+  "websiteUrl": "https://pipeworx.io/packs/usno-astronomy",
+  "repository": {
+    "url": "https://github.com/pipeworx-io/mcp-usno-astronomy",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://gateway.pipeworx.io/usno-astronomy/mcp"
+    }
+  ]
+}

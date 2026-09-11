@@ -1,0 +1,27 @@
+{
+  "name": "@pipeworx/mcp-usno-astronomy",
+  "version": "0.1.0",
+  "description": "Solar eclipses, local eclipse circumstances, Moon phases and the seasons from the US Naval Observatory — when the next solar eclipse is, what it looks like from a place, every full and new moon, equinoxes and solstices.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "bin": {
+    "mcp-usno-astronomy": "bin/cli.js"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "usno-astronomy"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-usno-astronomy.git"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "tsx": "^4.19.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
