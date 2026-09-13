@@ -614,7 +614,7 @@ function internalHostMetricsClass(error: string): string | undefined {
 
 
 /**
- * Next solar eclipse, eclipse times by location, Moon phases and seasons from the US Naval Observatory.
+ * Next solar eclipse, eclipse times by place, Moon phases and seasons from the US Naval Observatory.
  *
  * Keyless. Every time USNO publishes is Universal Time (UT1), and every
  * response here says so.
