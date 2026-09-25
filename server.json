@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/usno-astronomy",
   "title": "Usno Astronomy",
   "description": "Next solar eclipse, eclipse times by place, Moon phases and seasons from the US Naval Observatory.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/usno-astronomy",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-usno-astronomy",
