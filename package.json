@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-usno-astronomy",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Next solar eclipse, eclipse times by place, Moon phases and seasons from the US Naval Observatory.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "usno-astronomy",
     "gatewaySlug": "usno-astronomy",
-    "sourceHash": "v1-bc73104b346d5371ab358a6832eeba71d4a169b6a662f639e5f704fddea14094",
-    "sourceCommit": "98853f34516646cb7c4c1460f09249b262c0269e"
+    "sourceHash": "v1-dc64d9a530839e1c0b8f1594948ee397f4b897ffe756d96fd1795a82b83da021",
+    "sourceCommit": "ca52e7ed1e1ccad897c2da1b0fa105edc0bc3b2e"
   }
 }
